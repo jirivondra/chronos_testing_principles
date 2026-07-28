@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Enforces branch names of the form <type>/<description> (Conventional Commits types)
+# and auto-prefixes the commit message with the branch's type if not already present.
+#
+# Install once per clone:
+#   git config core.hooksPath .githooks
+
+COMMIT_MSG_FILE=$1
+BRANCH_NAME="$(git symbolic-ref --short HEAD 2>/dev/null || echo HEAD)"
+
+ALLOWED_TYPES="feat|fix|refactor|chore|docs|test|ci|build|perf|style"
+EXEMPT_BRANCHES="^(main|master|develop|HEAD)$"
+VALID_BRANCH_REGEX="^($ALLOWED_TYPES)/[a-z0-9._-]+$"
+COMMIT_MSG_PREFIX_REGEX="^($ALLOWED_TYPES)(\([a-z0-9._-]+\))?: .{2,}"
+
+ERR_MSG=$(cat << EOF
+Branch names must satisfy: $VALID_BRANCH_REGEX
+Allowed types: feat, fix, refactor, chore, docs, test, ci, build, perf, style
+Example: feat/due-date-coverage, fix/soap-fault-message
+EOF
+)
+
+shopt -s nocasematch
+
+if [[ "$BRANCH_NAME" =~ $EXEMPT_BRANCHES ]]; then
+    exit 0
+fi
+
+if [[ ! "$BRANCH_NAME" =~ $VALID_BRANCH_REGEX ]]; then
+    echo -e "$ERR_MSG"
+    exit 1
+fi
+
+COMMIT_MSG_BASE="$(cat "$COMMIT_MSG_FILE")"
+
+# commit message already has a valid type prefix — leave it as-is
+if [[ "$COMMIT_MSG_BASE" =~ $COMMIT_MSG_PREFIX_REGEX ]]; then
+    exit 0
+fi
+
+branch_type="${BRANCH_NAME%%/*}"
+echo "$branch_type: $COMMIT_MSG_BASE" > "$COMMIT_MSG_FILE"
+
+exit 0

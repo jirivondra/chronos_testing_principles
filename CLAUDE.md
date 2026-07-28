@@ -28,4 +28,6 @@ Playwright stack:
 
 ## Docs
 
-<!-- paste the chosen block here -->
+@docs/git-workflow.md
+
+<!-- paste the chosen stack block here -->
