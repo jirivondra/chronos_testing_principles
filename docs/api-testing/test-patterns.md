@@ -6,7 +6,7 @@ Tests are composed from five shared layers plus the test files themselves:
 
 - **testData/** — all test input values and expected results. Never define data inline in test files.
 - **config/** — named constants for URLs, HTTP status codes, and SOAP operations. Never use raw strings or numbers in tests.
-- **helpers/** — thin project-local wiring (`makeRequest`, `makeSoapRequest`) around `@jirivondra/chronos-test-toolkit-ts`, which owns the actual HTTP/SOAP client logic and response wrappers (`ApiResponse`, `SoapResponse`).
+- **helpers/** — thin project-local wiring (`makeRequest`, `makeSoapRequest`) around `@jirivondra/chronos-test-toolkit-api-ts`, which owns the actual HTTP/SOAP client logic and response wrappers (`ApiResponse`, `SoapResponse`).
 - **schemas/** — response body shape definitions used for JSON validation.
 - **types/** — TypeScript interfaces for domain entities.
 

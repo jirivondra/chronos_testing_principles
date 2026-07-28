@@ -21,7 +21,7 @@ Then:
 1. Rename `# <Project Name>` at the top of `CLAUDE.md`.
 2. Run `git config core.hooksPath .githooks` once — enforces `docs/git-workflow.md`'s branch naming convention locally.
 3. Follow the instructions in `CLAUDE.md` to activate the docs block matching this project's stack (REST/SOAP or Playwright), and delete the other one.
-4. **REST/SOAP (TypeScript) projects:** add `@jirivondra/chronos-test-toolkit-ts` as a dependency (see that repo's README) and follow `docs/api-testing/structure.md`. If the project uses a different language, `docs/api-testing/principles.md` and `docs/api-testing/test-patterns.md` still apply conceptually — reimplement the equivalent of the toolkit in that language's ecosystem, keeping the same shape (fluent response wrapper, facade over the HTTP client, named test data, etc).
+4. **REST/SOAP (TypeScript) projects:** add `@jirivondra/chronos-test-toolkit-api-ts` as a dependency (see that repo's README) and follow `docs/api-testing/structure.md`. If the project uses a different language, `docs/api-testing/principles.md` and `docs/api-testing/test-patterns.md` still apply conceptually — reimplement the equivalent of the toolkit in that language's ecosystem, keeping the same shape (fluent response wrapper, facade over the HTTP client, named test data, etc).
 5. **Playwright projects:** follow `docs/playwright-testing/*.md` for the page object inheritance chain, fixture, and test-data conventions. There's no published npm toolkit for Playwright yet — these are documented patterns to reimplement per project, not an installable package.
 6. Copy `.claude/commands/add-regression-test.md`/`add-smoke-test.md` for REST/SOAP projects, or write Playwright-flavored equivalents (not included yet).
 

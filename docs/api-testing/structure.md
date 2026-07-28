@@ -1,6 +1,6 @@
 # Project Structure (template)
 
-This layout assumes the project depends on `@jirivondra/chronos-test-toolkit-ts` for the reusable
+This layout assumes the project depends on `@jirivondra/chronos-test-toolkit-api-ts` for the reusable
 HTTP/SOAP client logic and response wrappers, keeping only project-specific glue and data locally.
 
 ## Directory Overview
@@ -8,7 +8,7 @@ HTTP/SOAP client logic and response wrappers, keeping only project-specific glue
 ```
 config/       # constants and static configuration
 docs/         # project documentation
-helpers/      # thin wiring around @jirivondra/chronos-test-toolkit-ts — no request/response logic
+helpers/      # thin wiring around @jirivondra/chronos-test-toolkit-api-ts — no request/response logic
 schemas/      # schema definitions for response body validation (per entity)
 testData/     # centralized test input data, one file per protocol
 types/        # TypeScript interfaces (per entity)
@@ -25,7 +25,7 @@ test/
 
 Static, reusable constants shared across the project.
 
-- `httpStatus.ts` — `export { HTTP_STATUS } from '@jirivondra/chronos-test-toolkit-ts';`. Always use `HTTP_STATUS.*` instead of raw numbers.
+- `httpStatus.ts` — `export { HTTP_STATUS } from '@jirivondra/chronos-test-toolkit-api-ts';`. Always use `HTTP_STATUS.*` instead of raw numbers.
 - `urls.ts` — named URL path constants, specific to this project's API. Always use these instead of inline strings.
 - `soapOperations.ts` — named SOAP operation constants (only if the project has a SOAP API). Always use these instead of raw strings.
 
@@ -88,4 +88,4 @@ SOAP_URL=http://localhost:8001   # only if the project has a SOAP API
 
 ## package.json
 
-Add `@jirivondra/chronos-test-toolkit-ts` as a dependency and a project-local `.npmrc` pointing `@jirivondra` at GitHub Packages — see the toolkit's README for the exact snippet.
+Add `@jirivondra/chronos-test-toolkit-api-ts` as a dependency and a project-local `.npmrc` pointing `@jirivondra` at GitHub Packages — see the toolkit's README for the exact snippet.

@@ -14,7 +14,7 @@ Before writing non-trivial logic by hand — parsing, encoding, validation, or s
 
 This does not mean adding a dependency for every small thing — a handful of stable, project-specific constants (URLs, SOAP operation names) are fine to own directly. It targets logic: parsing, validation, encoding, or standardized values that a mature library already implements correctly.
 
-**Example:** `config/httpStatus.ts` re-exports `HTTP_STATUS` from `@jirivondra/chronos-test-toolkit-ts`, which sources its values from axios's `HttpStatusCode` enum instead of hardcoding the same numbers by hand.
+**Example:** `config/httpStatus.ts` re-exports `HTTP_STATUS` from `@jirivondra/chronos-test-toolkit-api-ts`, which sources its values from axios's `HttpStatusCode` enum instead of hardcoding the same numbers by hand.
 
 ## Documentation stays in sync
 
@@ -94,7 +94,7 @@ export const restTestData = {
 
 ## Facade
 
-Tests never import the HTTP/SOAP client library directly. `makeRequest`/`makeSoapRequest` are project-local facades wiring `@jirivondra/chronos-test-toolkit-ts` that hide the underlying HTTP client and translate raw responses into a fluent response wrapper. This means transport-level changes (auth, base URL, error handling) stay confined to one place and never leak into test files.
+Tests never import the HTTP/SOAP client library directly. `makeRequest`/`makeSoapRequest` are project-local facades wiring `@jirivondra/chronos-test-toolkit-api-ts` that hide the underlying HTTP client and translate raw responses into a fluent response wrapper. This means transport-level changes (auth, base URL, error handling) stay confined to one place and never leak into test files.
 
 ```
 test file → makeRequest (facade) → toolkit http client → API
@@ -106,7 +106,7 @@ Every function must have a cyclomatic complexity of at most **2**. Complexity st
 
 A complexity above 2 is a signal that the function is doing too much or contains logic that should be split or expressed differently.
 
-Enforce automatically by ESLint — the build should fail if the limit is exceeded (see the shared `complexity: 2` rule in `@jirivondra/chronos-test-toolkit-ts/eslint-config`).
+Enforce automatically by ESLint — the build should fail if the limit is exceeded (see the shared `complexity: 2` rule in `@jirivondra/chronos-test-toolkit-api-ts/eslint-config`).
 
 **Allowed (complexity 2):**
 
