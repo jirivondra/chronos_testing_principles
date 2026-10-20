@@ -42,4 +42,5 @@ Then:
 - `.claude/commands/add-regression-test.md`, `.claude/commands/add-smoke-test.md` — Claude Code slash commands for REST/SOAP test files.
 - `docs/git-workflow.md` — branch naming (`<type>/<description>`) and commit message convention, stack-agnostic.
 - `.githooks/prepare-commit-msg` — enforces the above; install with `git config core.hooksPath .githooks`.
+- `docs/taskfile-conventions.md` — `task:`/`defer:` reference syntax vs. bare shell commands in `Taskfile.yml`, stack-agnostic.
 - `CLAUDE.md` — skeleton with both stacks' `@`-import blocks; pick one.
