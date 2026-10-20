@@ -29,5 +29,6 @@ Playwright stack:
 ## Docs
 
 @docs/git-workflow.md
+@docs/taskfile-conventions.md
 
 <!-- paste the chosen stack block here -->
