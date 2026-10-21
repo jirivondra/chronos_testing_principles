@@ -29,5 +29,7 @@ Playwright stack:
 ## Docs
 
 @docs/git-workflow.md
+@docs/generated-validation-artifacts.md
+@docs/cross-repo-ci.md
 
 <!-- paste the chosen stack block here -->

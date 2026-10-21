@@ -42,4 +42,6 @@ Then:
 - `.claude/commands/add-regression-test.md`, `.claude/commands/add-smoke-test.md` — Claude Code slash commands for REST/SOAP test files.
 - `docs/git-workflow.md` — branch naming (`<type>/<description>`) and commit message convention, stack-agnostic.
 - `.githooks/prepare-commit-msg` — enforces the above; install with `git config core.hooksPath .githooks`.
+- `docs/generated-validation-artifacts.md` — generate schemas/contracts from a live source of truth instead of hand-writing them; a drift check must only ever compare, never overwrite, or it silently stops catching anything. Stack-agnostic.
+- `docs/cross-repo-ci.md` — the blind spot in a producer/consumer repo pair: the producer's CI validates the consumer's main, but nothing validates the consumer's own open PRs unless it has CI of its own. Stack-agnostic.
 - `CLAUDE.md` — skeleton with both stacks' `@`-import blocks; pick one.
